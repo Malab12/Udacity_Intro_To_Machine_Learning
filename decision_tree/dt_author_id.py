@@ -18,9 +18,14 @@ from email_preprocess import preprocess
 ### and testing datasets, respectively
 ### labels_train and labels_test are the corresponding item labels
 features_train, features_test, labels_train, labels_test = preprocess()
-
-
-
+from sklearn import tree
+print len(features_train[0])
+clf = tree.DecisionTreeClassifier(min_samples_split = 40)
+print "Traning the Classifier please wait"
+clf.fit(features_train, labels_train)
+print "Training Complete"
+pred = clf.predict(features_test)
+print "The accuracy of the classifier is: ", clf.score(features_test, labels_test)
 
 #########################################################
 ### your code goes here ###
